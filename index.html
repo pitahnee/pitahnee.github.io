@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div>TIME-IN: 
+      <input type="time" id="startTime"><br><br>
+      <p>TIME-OUT: <span id="endtime"></span></p>
+    </div>
+    
+    <script>
+      var startTime = document.getElementById("startTime");
+      var endTime = document.getElementById("endtime");
+    
+      startTime.addEventListener("input", function() {
+        
+        var timeIn = startTime.value;
+        console.log(timeIn)
+        var [hour, min] = timeIn.split(':')
+        var timeOutInMinutes = (Number(hour) * 60) + Number(min) + 570;
+        var finalHour = Math.floor((timeOutInMinutes) / 60);
+        var finalMin = timeOutInMinutes % 60;
+
+        endTime.innerText = `${finalHour}:${finalMin}`;
+      }, false);
+
+    </script>
+</body>
+</html>
